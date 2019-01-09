@@ -19,6 +19,9 @@ public class AccountController {
         this.commandGateway = commandGateway;
     }
 
+    /**
+     * 创建账户。
+     */
     @PostMapping
     public CompletableFuture<Object> crate() {
         UUID accountId = UUID.randomUUID();
@@ -26,11 +29,17 @@ public class AccountController {
         return commandGateway.send(command);
     }
 
+    /**
+     * 存款。
+     */
     @PutMapping("/{accountId}/deposit/{amount}")
     public void deposit(@PathVariable String accountId, @PathVariable Double amount) {
         commandGateway.send(new AccountDepositCommand(accountId, amount));
     }
 
+    /**
+     * 取款。
+     */
     @PutMapping("/{accountId}/withdraw/{amount}")
     public CompletableFuture<Object> withdraw(@PathVariable String accountId, @PathVariable Double amount) {
         return commandGateway.send(new AccountWithdrawCommand(accountId, amount));
