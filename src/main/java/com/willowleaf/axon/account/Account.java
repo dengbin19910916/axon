@@ -9,22 +9,18 @@ import com.willowleaf.axon.account.event.AccountWithdrawnEvent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
-
 
 @Data
 @NoArgsConstructor
 @Aggregate
-@Entity(name = "tb_account")
 public class Account {
 
-    @Id
+    @AggregateIdentifier
     private String id;
 
     private Double deposit;

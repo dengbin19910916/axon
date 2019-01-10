@@ -12,6 +12,9 @@ server:
   port: 8080
   http2:
     enabled: true
+logging:
+  level:
+    org.axonframework: debug
 ---
 spring:
   profiles: dev
