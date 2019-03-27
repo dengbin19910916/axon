@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <axon.version>4.1.1</axon.version>
     </properties>
 
     <dependencies>
@@ -34,7 +35,7 @@
         <dependency>
             <groupId>org.axonframework</groupId>
             <artifactId>axon-spring-boot-starter</artifactId>
-            <version>3.4.2</version>
+            <version>${axon.version}</version>
         </dependency>
 
         <dependency>
