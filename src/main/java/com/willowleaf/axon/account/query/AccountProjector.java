@@ -28,7 +28,7 @@ public class AccountProjector {
     public void on(AccountDepositedEvent event) {
         Optional<AccountEntity> account = repository.findById(event.getAccountId());
         account.ifPresent(entity -> {
-            entity.setDeposit(entity.getDeposit() + event.getAmount());
+            entity.setDeposit(entity.getDeposit() == null ? 0.0 : entity.getDeposit() + event.getAmount());
             repository.save(entity);
         });
     }
